@@ -86,9 +86,7 @@ class ExecutableController extends Controller
             }
         }, 'questions.alternatives' => function ($query) use($questionnaire) {
             if($questionnaire->rand_alternatives) {
-                $query->where('is_active', 1)->orderByRaw('RAND()');      
-            } else {
-                $query->where('is_active', 1);
+                $query->orderByRaw('RAND()');      
             }
         }])->find($questionnaireId);
         

@@ -22,6 +22,12 @@
     <p>{!! $questionnaire->rand_questions ? 'Sim' : 'Não' !!}</p>
 </div>
 
+<!-- Rand Alternatives Field -->
+<div class="form-group col-sm-12">
+    {!! Form::label('rand_alternatives', 'Randomizar as alternativas na hora da execução:') !!}
+    <p>{!! $questionnaire->rand_alternatives ? 'Sim' : 'Não' !!}</p>
+</div>
+
 @if(isset($questionnaire->waiting_time))
     <!-- Waiting Time Field -->
     <div class="form-group col-sm-6">

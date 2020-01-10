@@ -78,6 +78,7 @@ class QuestionnaireController extends Controller
             'execution_time'            => isset($input['execution_time']) ? $input['execution_time'] : null,
             'type_execution_time'       => isset($input['type_execution_time']) ? $input['type_execution_time'] : null,
             'rand_questions'            => isset($input['rand_questions']) ? true : false,
+            'rand_alternatives'         => isset($input['rand_alternatives']) ? true : false,
             'instructions_before_start' => $input['instructions_before_start'],
             'instructions_start'        => $input['instructions_start'],
             'instructions_end'          => $input['instructions_end'],
@@ -216,6 +217,12 @@ class QuestionnaireController extends Controller
             $inputQuestionnaire['rand_questions'] = true;
         } else {
             $inputQuestionnaire['rand_questions'] = false;
+        }
+
+        if (isset($inputQuestionnaire['rand_alternatives'])) {
+            $inputQuestionnaire['rand_alternatives'] = true;
+        } else {
+            $inputQuestionnaire['rand_alternatives'] = false;
         }
                 
         if(!isset($input['checkbox_waiting_time'])) {

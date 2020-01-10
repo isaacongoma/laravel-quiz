@@ -22,6 +22,12 @@
     {!! Form::checkbox('rand_questions', null, null) !!}
 </div>
 
+<!-- Rand Alternatives Field -->
+<div class="form-group col-sm-12">
+    {!! Form::label('rand_alternatives', 'Deseja randomizar as respostas na hora da execução?') !!}
+    {!! Form::checkbox('rand_alternatives', null, null) !!}
+</div>
+
 <!-- Waiting Time Checkbox -->
 <div class="form-group col-sm-12 col-md-6" id="checkbox_waiting_time_block">
     {!! Form::label('checkbox_waiting_time', 'Deseja definir um tempo de espera para submeter outra resposta?') !!}

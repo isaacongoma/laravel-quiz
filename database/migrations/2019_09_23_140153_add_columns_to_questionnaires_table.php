@@ -15,6 +15,7 @@ class AddColumnsToQuestionnairesTable extends Migration
     {
         Schema::table('questionnaires', function (Blueprint $table) {
             $table->boolean('rand_questions');
+            $table->boolean('rand_alternatives');
             $table->longtext('instructions_before_start')->nullable();
             $table->longtext('instructions_start')->nullable();
             $table->longtext('instructions_end')->nullable();
@@ -30,6 +31,7 @@ class AddColumnsToQuestionnairesTable extends Migration
     {
         Schema::table('questionnaires', function (Blueprint $table) {
             $table->dropColumn('rand_questions');
+            $table->dropColumn('rand_alternatives');
             $table->dropColumn('instructions_before_start');
             $table->dropColumn('instructions_start');
             $table->dropColumn('instructions_end');

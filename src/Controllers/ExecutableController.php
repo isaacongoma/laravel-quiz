@@ -72,7 +72,7 @@ class ExecutableController extends Controller
      */
     public function create(ExecutionTimeService $executionTimeService)
     {
-        $parentId = config('quiz.modes.parent_id');
+        $parentId = config('quiz.models.parent_id');
         $parentId = request()->$parentId;
         $questionnaireId = request()->questionnaire_id;
         $modelId = request()->model_id;

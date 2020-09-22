@@ -1,5 +1,9 @@
-# InputCustomizer
+# LaravelQuiz
 Pacote para adicionar questionários a um projeto Laravel.
+
+## Requisitos Mínimos
+- Laravel 5.8
+- Laravel Datatables 9.0
 
 ## Instalação
 Para instalar, basta utilizar o comando abaixo:
@@ -11,12 +15,12 @@ Em seguida, publique os assets:
 php artisan vendor:publish --provider="PandoApps\Quiz\QuizServiceProvider"
 ```
 
-## Configuração Inicial
-Certifique-se de que não existam tabelas com os nomes "questionnaires", "question_types", "questions", "alternatives", "executables" e "answers". Caso exista, remova-as ou renomeie-as, não se esqueça dos models, views e tudo o que tiver relação com as tabelas citadas. Quando estiver pronto, execute a migration:
+## Configuração
+Certifique-se de que não existam tabelas com os nomes "questionnaires", "question_types", "questions", "alternatives", "executables" e "answers". Caso existam, remova-as ou renomeie-as, não se esqueça dos models, views e tudo o que tiver relação com as tabelas citadas. Quando estiver pronto, execute a migration:
 ```php
 php artisan migrate
 ```
-Em seguida, execute QuestionTypeSeeder:
+Em seguida, execute o seeder **QuestionTypeSeeder**:
 ```php
 php artisan db:seed --class=QuestionTypeSeeder
 ```
@@ -95,7 +99,7 @@ Adicione as rotas em **routes/web.php**:
 	});
 ```
 Adicione o questionário ao menu em **resources/views/layouts/menu.blade.php**, substituindo **request()->PARENT_ID** pelo correspondente em seu caso (no exemplo, seria **request()->holding_id**):
-```php
+```html
 	<li class="{{ (Request::is('*questionnaires*') || Request::is('*questions*') || Request::is('*alternatives*')) ? 'active' : '' }}">
 		<a href="{!! route('questionnaires.index', request()->PARENT_ID) !!}"><i class="far fa-list-alt sidebar-icons"></i><span>{!! \Lang::choice('tables.questionnaires','p') !!}</span></a>
 		@if(Request::is('*questions*') && request()->questionnaire_id)
@@ -122,21 +126,17 @@ Adicione as traduções dos nomes das tabelas em **resources/lang/pt_BR/tables.p
 	'question_types'        => '[s] Tipo da Questão      |[p] Tipo das Questões',
 	'answers'               => '[s] Resposta             |[p] Respostas',
 ```
+Para modificar as traduções exibidas nas datatables, edite o arquivo **resources/lang/vandor/pandoapps/pt_BR/datatable.php**.
 Para modificar as datatables, crie um cópia delas em **app/DataTables**, utilize os arquivos abaixo como base (não se esqueça de mudar o namespace para **App\DataTables**):
-```
 	- [QuestionnaireDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/QuestionnaireDataTable.php)
 	- [QuestionDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/QuestionDataTable.php)
 	- [AlternativeDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/AlternativeDataTable.php)
 	- [ExecutableDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/ExecutableDataTable.php)
 	- [AnswerDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/AnswerDataTable.php)
-```
 Para modificar as controllers, crie um cópia delas em **app/Http/Controllers**, utilize os arquivos abaixo como base (não se esqueça de mudar o namespace para **App\Http\Controllers**):
-```
 	- [QuestionnaireController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/QuestionnaireController.php)
 	- [QuestionController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/QuestionController.php)
 	- [AlternativeController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/AlternativeController.php)
 	- [ExecutableController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/ExecutableController.php)
 	- [AnswerController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/AnswerController.php)
-```
 Para modificar as views, edite os arquivos no diretório **resources/views/vendor/pandoapps**.
-Para modificar as traduções exibidas nas datatables, edite o arquivo **resources/lang/vandor/pandoapps/pt_BR/datatable.php**.

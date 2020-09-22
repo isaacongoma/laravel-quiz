@@ -127,7 +127,7 @@ Adicione o questionário ao menu em **resources/views/layouts/menu.blade.php**, 
 	</li>
 ```
 
-Para modificar as traduções exibidas nas datatables, edite o arquivo **resources/lang/vandor/pandoapps/pt_BR/datatable.php**. Já para traduzir os nomes das tabelas, adicione as linhas abaixo em **resources/lang/pt_BR/tables.php**:
+Adicione as traduções das tabelas em **resources/lang/pt_BR/tables.php**:
 ```php
 	'questionnaires'        => '[s] Questionário         |[p] Questionários',
 	'questions'             => '[s] Questão              |[p] Questões',
@@ -135,6 +135,11 @@ Para modificar as traduções exibidas nas datatables, edite o arquivo **resourc
 	'question_types'        => '[s] Tipo da Questão      |[p] Tipo das Questões',
 	'answers'               => '[s] Resposta             |[p] Respostas',
 ```
+
+## Personalização
+As instruções abaixo não são necessárias para o pacote funcionar, mas servem de orientação para uma maior personalização do pacote.
+
+Para modificar as traduções exibidas nas datatables, edite o arquivo **resources/lang/vandor/pandoapps/pt_BR/datatable.php**.
 
 Para modificar as datatables, crie um cópia delas em **app/DataTables**, utilize os arquivos abaixo como base (não se esqueça de mudar o namespace para **App\DataTables**):
 - [QuestionnaireDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/QuestionnaireDataTable.php)

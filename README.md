@@ -128,15 +128,15 @@ Adicione as traduções dos nomes das tabelas em **resources/lang/pt_BR/tables.p
 ```
 Para modificar as traduções exibidas nas datatables, edite o arquivo **resources/lang/vandor/pandoapps/pt_BR/datatable.php**.
 Para modificar as datatables, crie um cópia delas em **app/DataTables**, utilize os arquivos abaixo como base (não se esqueça de mudar o namespace para **App\DataTables**):
-	- [QuestionnaireDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/QuestionnaireDataTable.php)
-	- [QuestionDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/QuestionDataTable.php)
-	- [AlternativeDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/AlternativeDataTable.php)
-	- [ExecutableDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/ExecutableDataTable.php)
-	- [AnswerDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/AnswerDataTable.php)
+- [QuestionnaireDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/QuestionnaireDataTable.php)
+- [QuestionDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/QuestionDataTable.php)
+- [AlternativeDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/AlternativeDataTable.php)
+- [ExecutableDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/ExecutableDataTable.php)
+- [AnswerDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/AnswerDataTable.php)
 Para modificar as controllers, crie um cópia delas em **app/Http/Controllers**, utilize os arquivos abaixo como base (não se esqueça de mudar o namespace para **App\Http\Controllers**):
-	- [QuestionnaireController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/QuestionnaireController.php)
-	- [QuestionController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/QuestionController.php)
-	- [AlternativeController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/AlternativeController.php)
-	- [ExecutableController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/ExecutableController.php)
-	- [AnswerController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/AnswerController.php)
+- [QuestionnaireController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/QuestionnaireController.php)
+- [QuestionController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/QuestionController.php)
+- [AlternativeController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/AlternativeController.php)
+- [ExecutableController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/ExecutableController.php)
+- [AnswerController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/AnswerController.php)
 Para modificar as views, edite os arquivos no diretório **resources/views/vendor/pandoapps**.

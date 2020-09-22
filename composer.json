@@ -1,6 +1,6 @@
 {
     "name": "brenofortunato/laravel-quiz",
-    "description": "Library for adding questionnaires into Laravel.",
+    "description": "Library for adding questionnaires into a Laravel project.",
     "authors": [
         {
             "name": "Vinícius",
@@ -13,13 +13,9 @@
         {
             "name": "Breno Fortunato",
             "email": "brenofortunato@gmail.com"
-        },
-        {
-            "name": "PandoApps",
-            "email": "contato@pandoapps.com.br"
         }
     ],
-    "keywords": ["Laravel", "Quiz"],
+    "keywords": ["Laravel", "Quiz", "Questionnaire", "Question"],
     "require": {
         "php" : ">=7.0",
         "ghunti/highcharts-php": "~3.0",

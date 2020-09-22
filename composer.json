@@ -1,18 +1,22 @@
 {
-    "name": "devfelipereis/laravel-quiz",
-    "description": "Library for adding questionnaires into Laravel framework",
-    "license": "MIT",
+    "name": "brenofortunato/laravel-quiz",
+    "description": "Library for adding questionnaires into Laravel.",
     "authors": [
         {
             "name": "Vinícius",
-            "email": "viniciuso970@gmail.com",
-            "role": "Developer"
+            "email": "viniciuso970@gmail.com"
+        },
+        {
+            "name": "Felipe Reis",
+            "email": "felipereis@pandoapps.com.br"
+        },
+        {
+            "name": "Breno Fortunato",
+            "email": "brenofortunato@gmail.com"
         },
         {
             "name": "PandoApps",
-            "email": "contato@pandoapps.com.br",
-            "homepage": "https://pandoapps.com.br",
-            "role": "Company"
+            "email": "contato@pandoapps.com.br"
         }
     ],
     "keywords": ["Laravel", "Quiz"],
@@ -56,5 +60,7 @@
                 "Quiz": "PandoApps\\Quiz\\Facades\\Quiz"
             }
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "license": "MIT"
 }

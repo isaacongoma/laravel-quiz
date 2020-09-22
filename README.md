@@ -10,20 +10,23 @@ Para instalar, basta utilizar o comando abaixo:
 ```php
 composer require devfelipereis/laravel-quiz
 ```
+
 Em seguida, publique os assets:
 ```php
 php artisan vendor:publish --provider="PandoApps\Quiz\QuizServiceProvider"
 ```
 
 ## Configuração
-Certifique-se de que não existam tabelas com os nomes "questionnaires", "question_types", "questions", "alternatives", "executables" e "answers". Caso existam, remova-as ou renomeie-as, não se esqueça dos models, views e tudo o que tiver relação com as tabelas citadas. Quando estiver pronto, execute a migration:
+Certifique-se de que não existam tabelas com os nomes **questionnaires**, **question_types**, **questions**, **alternatives**, **executables** e **answers**. Caso existam, remova-as ou renomeie-as, não se esqueça dos models, views e tudo o que tiver relação com as tabelas citadas. Quando estiver pronto, execute a migration:
 ```php
 php artisan migrate
 ```
+
 Em seguida, execute o seeder **QuestionTypeSeeder**:
 ```php
 php artisan db:seed --class=QuestionTypeSeeder
 ```
+
 Abra o arquivo **config/quiz.php** e edite o array **models** para atender suas necessidades, conforme descrições abaixo:
 ```php
 	'models' => [
@@ -34,6 +37,7 @@ Abra o arquivo **config/quiz.php** e edite o array **models** para atender suas 
 		'parent_url_name'          => 'holdings',           // Nome da tabela do model que é dono do questionário
 	]
 ```
+
 Adicione o relacionamento abaixo ao model que responderá o questionário (no caso do exemplo acima, em **User**):
 ```php
 	/**
@@ -44,6 +48,7 @@ Adicione o relacionamento abaixo ao model que responderá o questionário (no ca
 		return $this->morphToMany(\PandoApps\Quiz\Models\Questionnaire::class, 'executable')->withPivot('id', 'score', 'answered')->withTimestamps();
 	}
 ```
+
 E o relacionamento abaixo ao model que é dono do questionário (no caso do exemplo, em **Holding**):
 ```php
 	/**
@@ -54,6 +59,7 @@ E o relacionamento abaixo ao model que é dono do questionário (no caso do exem
 		return $this->morphMany(\PandoApps\Quiz\Models\Questionnaire::class, 'parent');
 	}
 ```
+
 Adicione as rotas em **routes/web.php**:
 ```php
 	Route::group(['prefix' => config('quiz.models.parent_url_name'). '/{' . config('quiz.models.parent_id'). '}'], function () {
@@ -98,6 +104,7 @@ Adicione as rotas em **routes/web.php**:
 		});
 	});
 ```
+
 Adicione o questionário ao menu em **resources/views/layouts/menu.blade.php**, substituindo **request()->PARENT_ID** pelo correspondente em seu caso (no exemplo, seria **request()->holding_id**):
 ```html
 	<li class="{{ (Request::is('*questionnaires*') || Request::is('*questions*') || Request::is('*alternatives*')) ? 'active' : '' }}">
@@ -118,7 +125,8 @@ Adicione o questionário ao menu em **resources/views/layouts/menu.blade.php**, 
 		@endisset
 	</li>
 ```
-Adicione as traduções dos nomes das tabelas em **resources/lang/pt_BR/tables.php**:
+
+Para modificar as traduções exibidas nas datatables, edite o arquivo **resources/lang/vandor/pandoapps/pt_BR/datatable.php**. Já para traduzir os nomes das tabelas, adicione as linhas abaixo em **resources/lang/pt_BR/tables.php**:
 ```php
 	'questionnaires'        => '[s] Questionário         |[p] Questionários',
 	'questions'             => '[s] Questão              |[p] Questões',
@@ -126,17 +134,19 @@ Adicione as traduções dos nomes das tabelas em **resources/lang/pt_BR/tables.p
 	'question_types'        => '[s] Tipo da Questão      |[p] Tipo das Questões',
 	'answers'               => '[s] Resposta             |[p] Respostas',
 ```
-Para modificar as traduções exibidas nas datatables, edite o arquivo **resources/lang/vandor/pandoapps/pt_BR/datatable.php**.
+
 Para modificar as datatables, crie um cópia delas em **app/DataTables**, utilize os arquivos abaixo como base (não se esqueça de mudar o namespace para **App\DataTables**):
 - [QuestionnaireDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/QuestionnaireDataTable.php)
 - [QuestionDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/QuestionDataTable.php)
 - [AlternativeDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/AlternativeDataTable.php)
 - [ExecutableDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/ExecutableDataTable.php)
 - [AnswerDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/AnswerDataTable.php)
+
 Para modificar as controllers, crie um cópia delas em **app/Http/Controllers**, utilize os arquivos abaixo como base (não se esqueça de mudar o namespace para **App\Http\Controllers**):
 - [QuestionnaireController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/QuestionnaireController.php)
 - [QuestionController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/QuestionController.php)
 - [AlternativeController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/AlternativeController.php)
 - [ExecutableController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/ExecutableController.php)
 - [AnswerController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/AnswerController.php)
+
 Para modificar as views, edite os arquivos no diretório **resources/views/vendor/pandoapps**.

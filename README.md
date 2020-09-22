@@ -28,7 +28,7 @@ Em seguida, execute o seeder **QuestionTypeSeeder**:
 php artisan db:seed --class=QuestionTypeSeeder
 ```
 
-Abra o arquivo **config/quiz.php** e edite o array **models** para atender suas necessidades, conforme descrições abaixo:
+Abra o arquivo **config/quiz.php** e edite o array models para atender suas necessidades, conforme descrições abaixo:
 ```php
 	'models' => [
 		'executable'               => App\User::class,      // Model que responderá o questionário
@@ -65,7 +65,7 @@ Adicione as rotas em **routes/web.php**:
 ```php
 	Route::group(['prefix' => config('quiz.models.parent_url_name'). '/{' . config('quiz.models.parent_id'). '}'], function () {
 		Route::group(['prefix' => 'questionnaires'], function () {
-			Route::get('/',                                          ['as'=>'questionnaires.index', 'uses'=>'\PandoApps\Quiz\Controllers\QuestionnaireController@index']);
+			Route::get('/',                                          ['as'=>'questionnaires.index',   'uses'=>'\PandoApps\Quiz\Controllers\QuestionnaireController@index']);
 			Route::get('/create',                                    ['as'=>'questionnaires.create',  'uses'=>'\PandoApps\Quiz\Controllers\QuestionnaireController@create']);
 			Route::post('/',                                         ['as'=>'questionnaires.store',   'uses'=>'\PandoApps\Quiz\Controllers\QuestionnaireController@store']);
 			Route::get('/{questionnaire_id}',                        ['as'=>'questionnaires.show',    'uses'=>'\PandoApps\Quiz\Controllers\QuestionnaireController@show']);
@@ -137,22 +137,35 @@ Adicione as traduções das tabelas em **resources/lang/pt_BR/tables.php**:
 ```
 
 ## Personalização
-As instruções abaixo não são necessárias para o pacote funcionar, mas servem de orientação para uma maior personalização do pacote.
+As instruções abaixo não são necessárias, mas servem de orientação para uma maior personalização do pacote.
 
-Para modificar as traduções exibidas nas datatables, edite o arquivo **resources/lang/vandor/pandoapps/pt_BR/datatable.php**.
+Caso queira modificar as traduções exibidas nas datatables, edite o arquivo **resources/lang/vandor/pandoapps/pt_BR/datatable.php**.
 
-Para modificar as datatables, crie um cópia delas em **app/DataTables**, utilize os arquivos abaixo como base (não se esqueça de mudar o namespace para **App\DataTables**):
+Caso queira modificar as views, edite os arquivos no diretório **resources/views/vendor/pandoapps**.
+
+Para modificar as datatables, crie um cópia delas em **app/DataTables**. Utilize os arquivos abaixo como base (não se esqueça de mudar o namespace para **App\DataTables**):
 - [QuestionnaireDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/QuestionnaireDataTable.php)
 - [QuestionDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/QuestionDataTable.php)
 - [AlternativeDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/AlternativeDataTable.php)
 - [ExecutableDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/ExecutableDataTable.php)
 - [AnswerDataTable](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/DataTables/AnswerDataTable.php)
 
-Para modificar as controllers, crie um cópia delas em **app/Http/Controllers**, utilize os arquivos abaixo como base (não se esqueça de mudar o namespace para **App\Http\Controllers**):
+Para modificar as controllers, crie um cópia delas em **app/Http/Controllers**. Utilize os arquivos abaixo como base (não se esqueça de mudar o namespace para **App\Http\Controllers**):
 - [QuestionnaireController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/QuestionnaireController.php)
 - [QuestionController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/QuestionController.php)
 - [AlternativeController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/AlternativeController.php)
 - [ExecutableController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/ExecutableController.php)
 - [AnswerController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/AnswerController.php)
 
-Para modificar as views, edite os arquivos no diretório **resources/views/vendor/pandoapps**.
+Ao modificar as controllers, não se esqueça de atualizar as rotas. Por exemplo, se **QuestionnaireController** for modificada, altere o bloco sob o prefixo **questionnaires** para:
+```php
+	Route::group(['prefix' => 'questionnaires'], function () {
+		Route::get('/',                                          ['as'=>'questionnaires.index',   'uses'=>'QuestionnaireController@index']);
+		Route::get('/create',                                    ['as'=>'questionnaires.create',  'uses'=>'QuestionnaireController@create']);
+		Route::post('/',                                         ['as'=>'questionnaires.store',   'uses'=>'QuestionnaireController@store']);
+		Route::get('/{questionnaire_id}',                        ['as'=>'questionnaires.show',    'uses'=>'QuestionnaireController@show']);
+		Route::match(['put', 'patch'], '/{questionnaire_id}',    ['as'=>'questionnaires.update',  'uses'=>'QuestionnaireController@update']);
+		Route::delete('/{questionnaire_id}',                     ['as'=>'questionnaires.destroy', 'uses'=>'QuestionnaireController@destroy']);
+		Route::get('/{questionnaire_id}/edit',                   ['as'=>'questionnaires.edit',    'uses'=>'QuestionnaireController@edit']);
+	});
+```

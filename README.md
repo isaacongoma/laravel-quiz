@@ -2,13 +2,14 @@
 Pacote para adicionar questionários a um projeto Laravel.
 
 ## Requisitos Mínimos
+- PHP 7.0
 - Laravel 5.8
 - Laravel Datatables 9.0
 
 ## Instalação
 Para instalar, basta utilizar o comando abaixo:
 ```php
-composer require devfelipereis/laravel-quiz
+composer require brenofortunato/laravel-quiz
 ```
 
 Em seguida, publique os assets:

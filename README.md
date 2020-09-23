@@ -39,8 +39,16 @@ Abra o arquivo **config/quiz.php** e edite o array models para atender suas nece
 	]
 ```
 
-Adicione o relacionamento abaixo ao model que responderá o questionário (no caso do exemplo acima, em **User**):
+Adicione os relacionamentos abaixo ao model que responderá o questionário (no caso do exemplo acima, em **User**):
 ```php
+	/**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+     **/
+    public function executables()
+    {
+        return $this->morphMany(\PandoApps\Quiz\Models\Executable::class, 'executable');
+	}
+
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
 	 **/

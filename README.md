@@ -157,7 +157,7 @@ Para modificar as controllers, crie um cópia delas em **app/Http/Controllers**.
 - [ExecutableController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/ExecutableController.php)
 - [AnswerController](https://github.com/BrenoFortunato/laravel-quiz/blob/master/src/Controllers/AnswerController.php)
 
-Ao modificar as controllers, não se esqueça de atualizar as rotas. Por exemplo, se **QuestionnaireController** for modificada, altere o bloco sob o prefixo **questionnaires** para:
+Ao modificar as controllers, não se esqueça de atualizar as rotas. Por exemplo, se **QuestionnaireController** for modificada, altere o atributo **uses** do bloco sob o prefixo **questionnaires** para:
 ```php
 	Route::group(['prefix' => 'questionnaires'], function () {
 		Route::get('/',                                          ['as'=>'questionnaires.index',   'uses'=>'QuestionnaireController@index']);

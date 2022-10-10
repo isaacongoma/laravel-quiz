@@ -1,5 +1,5 @@
 {
-    "name": "brenofortunato/laravel-quiz",
+    "name": "isaacongoma/laravel-quiz",
     "description": "Library for adding questionnaires into a Laravel project.",
     "authors": [
         {
@@ -13,6 +13,10 @@
         {
             "name": "Breno Fortunato",
             "email": "brenofortunato@gmail.com"
+        },
+        {
+            "name": "Isaac Ongoma",
+            "email": "isaacshisia@gmail.com"
         }
     ],
     "keywords": ["Laravel", "Quiz", "Questionnaire", "Question"],
